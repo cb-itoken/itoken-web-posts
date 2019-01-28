@@ -1,0 +1,63 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>iToken - 文章管理</title>
+    <th:block th:include="includes/head :: head"></th:block>
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<th:block th:include="includes/header :: header"></th:block>
+<th:block th:include="includes/menu :: menu"></th:block>
+
+<div class="wrapper">
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>
+                文章管理
+                <small></small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> 首页</a></li>
+                <li class="active">控制面板</li>
+            </ol>
+        </section>
+
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title" th:text="${tbPostsPost != null and tbPostsPost.postGuid != null ? '编辑文章' : '新增文章'}"></h3>
+                        </div>
+
+                        <form id="inputForm" class="form-horizontal" action="/save" method="post" th:object="${tbPostsPost}">
+                            <input type="hidden" name="postGuid" th:value="*{postGuid}" />
+
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">标题</label>
+                                    <div class="col-sm-10">
+                                        <input name="title" class="form-control required" placeholder="标题" />
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="box-footer">
+                                <button type="button" class="btn btn-default" onclick="history.go(-1);">返回</button>
+                                <button type="submit" class="btn btn-info pull-right">提交</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <th:block th:include="includes/copyright :: copyright"></th:block>
+</div>
+
+<th:block th:include="includes/foot :: foot"></th:block>
+
+</body>
+</html>

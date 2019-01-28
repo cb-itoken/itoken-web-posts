@@ -10,4 +10,14 @@ public class PostsServiceFallback implements PostsService {
     public String page(int pageNum, int pageSize, String tbPostsPostJson) {
         return Fallback.badGateway();
     }
+
+    @Override
+    public String get(String postGuid) {
+        return null;
+    }
+
+    @Override
+    public String save(String tbPostsPostJson, String optsBy) {
+        return Fallback.badGateway();
+    }
 }

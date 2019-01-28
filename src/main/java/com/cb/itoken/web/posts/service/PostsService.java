@@ -17,4 +17,15 @@ public interface PostsService extends BaseClientService {
             @PathVariable(required = true, value = "pageSize") int pageSize,
             @RequestParam(required = false, value = "tbPostsPostJson") String tbPostsPostJson
     );
+
+    @RequestMapping(value = "v1/posts/{postGuid}", method = RequestMethod.GET)
+    public String get(
+            @PathVariable(required = true, value = "postGuid") String postGuid
+    );
+
+    @RequestMapping(value = "v1/posts", method = RequestMethod.POST)
+    public String save(
+            @RequestParam(required = true, value = "tbPostsPostJson") String tbPostsPostJson,
+            @RequestParam(required = true, value = "optsBy") String optsBy
+    );
 }
