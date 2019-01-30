@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.UUID;
 
 @Controller
 public class PostsController extends BaseController<TbPostsPost, PostsService> {
@@ -52,7 +51,16 @@ public class PostsController extends BaseController<TbPostsPost, PostsService> {
      * 跳转到首页
      * @return
      */
-    @RequestMapping(value = {"", "index"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"", "main"}, method = RequestMethod.GET)
+    public String main(){
+        return "main";
+    }
+
+    /**
+     * 跳转列表页
+     * @return
+     */
+    @RequestMapping(value = "index", method = RequestMethod.GET)
     public String index(){
         return "index";
     }
