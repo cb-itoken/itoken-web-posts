@@ -32,7 +32,7 @@ public class WebPostsInterceptor implements HandlerInterceptor {
         // token 为空表示一定没有登录
         if(StringUtils.isBlank(token)){
             try {
-                response.sendRedirect(String.format("%s/login?url=%s", hosts_sso, HttpServletUtils.getFullPath(request)));
+                response.sendRedirect(String.format("%s/login?url=http://localhost:8602/%s", hosts_sso, request.getServletPath()));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -80,7 +80,7 @@ public class WebPostsInterceptor implements HandlerInterceptor {
         // 二次确认是否有用户信息
         if(tbSysUser == null){
             try {
-                response.sendRedirect(String.format("%s/login?url=%s", hosts_sso, HttpServletUtils.getFullPath(request)));
+                response.sendRedirect(String.format("%s/login?url=http://localhost:8602/%s", hosts_sso, request.getServletPath()));
             } catch (IOException e) {
                 e.printStackTrace();
             }
